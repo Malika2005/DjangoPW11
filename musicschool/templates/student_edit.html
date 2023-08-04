@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Edit</title>
+</head>
+<body>
+  <form method="post">
+    {% csrf_token %}
+    <label for="name">Name:
+      <input type="text" name="name" value="{{ student.name }}">
+    </label><br><br>
+    <label for="surname">Surname:
+      <input type="text" name="surname" value="{{ student.surname }}">
+    </label><br><br>
+    <label for="age">Age:
+      <input type="text" name="age" value="{{ student.age }}">
+    </label><br><br>
+    <label for="course">Course:
+      <input type="text" name="course" value="{{ student.course }}">
+    </label><br><br>
+    <label for="instrument">Musical instrument:
+      <select name="instrument">
+        <option value="guitar" {% if student.instrument == 'guitar' %}selected{% endif %}>Guitar</option>
+        <option value="piano" {% if student.instrument == 'piano' %}selected{% endif %}>Piano</option>
+        <option value="violin" {% if student.instrument == 'recorder' %}selected{% endif %}>Recorder</option>
+        <option value="piano" {% if student.instrument == 'trumpet' %}selected{% endif %}>Trumpet</option>
+      </select>
+    </label><br><br>
+    <label for="performance">Performance:
+      <input type="text" name="performance" value="{{ student.performance }}">
+    </label>
+    <br><br>
+    <label for="paid_for_studies">Paid for studies:
+      <input type="checkbox" name="paid_for_studies" {%if student.paid_for_studies%} checked {%endif%} value="True">
+    </label>
+    <br><br>
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>
